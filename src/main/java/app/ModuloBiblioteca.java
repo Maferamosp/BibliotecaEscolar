@@ -38,7 +38,7 @@ public class ModuloBiblioteca extends JFrame {
 
     public ModuloBiblioteca(Usuario usuario, Estudiante estudiante) {
         setTitle("Biblioteca Escolar - " + usuario.getNombre() + " (" + usuario.getRol() + ")");
-        this.bibliotecario = usuario.getRol().equals("bibliotecario");
+        this.bibliotecario = usuario.tieneGestionTotal();
 
         JTabbedPane pestanas = new JTabbedPane();
         pestanas.addTab("Libros", crearPanelLibros());

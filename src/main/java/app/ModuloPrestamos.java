@@ -34,7 +34,7 @@ public class ModuloPrestamos extends JPanel {
 
     public ModuloPrestamos(Usuario usuario, Estudiante estudiante) {
         this.estudiante = estudiante;
-        this.bibliotecario = usuario.getRol().equals("bibliotecario");
+        this.bibliotecario = usuario.tieneGestionTotal();
 
         setLayout(new BorderLayout(10, 10));
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

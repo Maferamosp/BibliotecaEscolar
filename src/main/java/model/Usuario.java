@@ -1,63 +1,22 @@
 package model;
 
-public class Usuario {
-    private int id;
-    private String nombre;
-    private String rut;
-    private String correo;
+public abstract class Usuario extends Persona {
     private String contrasena;
-    private String rol;
 
-    public Usuario(int id, String nombre, String rut, String correo, String contrasena, String rol) {
-        this.id = id;
-        this.nombre = nombre;
-        this.rut = rut;
+    public Usuario(int id, String nombre, String rut, String correo, String contrasena) {
+        super(id, nombre, rut, correo);
         this.contrasena = contrasena;
-        this.correo = correo;
-        this.rol = rol;
     }
 
-    public int getId() {
-        return id;
-    }
+    public abstract String getRol();
+
+    public abstract boolean tieneGestionTotal();
 
     public String getContrasena() {
         return contrasena;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public String getRut() {
-        return rut;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
     }
 }

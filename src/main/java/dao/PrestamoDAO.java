@@ -2,6 +2,7 @@ package dao;
 
 import controlador.DatabaseConnection;
 import model.Prestamo;
+import model.Vencible;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -104,10 +105,11 @@ public class PrestamoDAO {
 
     private Object[] filaPrestamo(ResultSet rs) throws SQLException {
         Date vencimiento = rs.getDate("fecha_devolucion");
+        Vencible prestamo = new Prestamo(0, 0, 0, rs.getDate("fecha_prestamo"), vencimiento, rs.getBoolean("devuelto"));
         String estado;
         if (rs.getBoolean("devuelto")) {
             estado = "Devuelto";
-        } else if (vencimiento.toLocalDate().isBefore(java.time.LocalDate.now())) {
+        } else if (prestamo.estaAtrasado()) {
             estado = "ATRASADO";
         } else {
             estado = "En prestamo";

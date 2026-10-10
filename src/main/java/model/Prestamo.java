@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Prestamo {
+public class Prestamo implements Vencible {
     private int id;
     private int idEstudiante;
     private int idLibro;
@@ -65,5 +65,10 @@ public class Prestamo {
 
     public void setIdLibro(int idLibro) {
         this.idLibro = idLibro;
+    }
+
+    @Override
+    public boolean estaAtrasado() {
+        return !devuelto && fechaDevolucion.before(new Date());
     }
 }
